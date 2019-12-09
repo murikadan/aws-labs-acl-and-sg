@@ -1,0 +1,14 @@
+PS C:\Users\> $Details.GroupDetailList[1].AttachedManagedPolicies
+
+PolicyArn                                                                     PolicyName
+---------                                                                     ----------
+arn:aws:iam::aws:policy/IAMSelfManageServiceSpecificCredentials               IAMSelfManageServiceSpecificCredentials
+arn:aws:iam::aws:policy/AmazonS3ReadOnlyAccess                                AmazonS3ReadOnlyAccess
+arn:aws:iam::aws:policy/IAMUserChangePassword                                 IAMUserChangePassword
+arn:aws:iam::aws:policy/AmazonVPCFullAccess                                   AmazonVPCFullAccess
+arn:aws:iam::aws:policy/IAMReadOnlyAccess                                     IAMReadOnlyAccess
+arn:aws:iam::aws:policy/IAMUserSSHKeys                                        IAMUserSSHKeys
+arn:aws:iam::aws:policy/AmazonRoute53FullAccess                               AmazonRoute53FullAccess
+arn:aws:iam::******:policy/Allow_EC2_Full_Access_For_EU_WEST_1_T2_MICRO Allow_EC2_Full_Access_For_EU_WEST_1_T2_MICRO
+arn:aws:iam::aws:policy/AWSCloudFormationFullAccess                           AWSCloudFormationFullAccess
+arn:aws:iam::aws:policy/IAMAccessAdvisorReadOnly                              IAMAccessAdvisorReadOnly
