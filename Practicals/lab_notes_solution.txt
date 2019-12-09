@@ -1,0 +1,41 @@
+Hands on lab: Set up internet connectivity for an instance in a private subnet using a NAT instance.
+
+Objectives:
+1. To be able to SSH to NAT instance and reach google
+2. To be able to SSH to application instance and reach google over NAT
+
+Pre-requisite: Install Putty.
+
+1. Sign in using the link: https://yasser-dev.signin.aws.amazon.com/console
+username: lab-user-[number] eg. lab-user-7
+password: amazon
+2. Switch to Europe - Ireland (eu-west-1) region top right
+3. Create key pair. Key pair name SAME as username: lab-user-[number] (ppk format). Download and save key pair. Load key pair into pageant. Enable SSH Key forwarding in putty.
+4. Create stack. Name stack SAME as username: lab-user-[number]. Keep all other options / parameters with default values.
+
+S3 template URL: https://yasser-cf-source.s3-eu-west-1.amazonaws.com/base.template
+
+Solution 1:
+Does the public subnet has a route to the internet ?
+Does the public subnet ACL has an inbound rule allowing SSH traffic ?
+Does the public subnet ACL has an inbound rule allowing ephemeral port traffic ?
+Does the public subnet ACL has an outbound rule allowing ephemeral port traffic ?
+Does the NAT SG has an inbound rule for SSH ? --> At this point SSH works [SSH into NAT to confirm]
+Does the public subnet ACL has an outbound rule allowing https traffic ? --> At this point google is reachable [curl https://www.google.com to confirm]
+
+Solution 2:
+Does the public subnet ACL have an outbound rule allowing SSH to private subnet ?
+Does the private subnet ACL have an outbound rule allowing ephemeral port traffic to public subnet ?
+Does the private subnet ACL have an inbound rule allowing SSH traffic from public subnet ?
+Does the private subnet ACL have an inbound rule allowing ephemeral port traffic from public subnet ?
+Does the NAT SG have an inbound rule for SSH from NAT instance ? --> At this point SSH to App server from NAT works
+Does the private subnet have a route to the internet ?
+Does the private subnet ACL have an outbound rule allowing HTTPS to internet ?
+Does the private subnet ACL have an outbound rule allowing ephemeral port traffic to internet ?
+Does the private subnet ACL have an inbound rule allowing ephemeral port traffic from internet ?
+Does the public subnet ACL have an inbound rule allowing HTTPS traffic from private subnet ?
+Does the NAT instance has source/destination check disabled ? --> At this point google is reachable from app server [curl https://www.google.com to confirm]
+
+
+Reference:
+https://docs.aws.amazon.com/vpc/latest/userguide/vpc-recommended-nacl-rules.html#nacl-rules-scenario-2
